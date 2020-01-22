@@ -13,6 +13,15 @@ pipeline {
         sh 'mvn --projects biojava-aligment test'
       }
     }
-
+    stage('whatever'){
+      steps{
+        sh'echo "hello from jenkins!"'
+      }
+    }
+  }
+  post {
+    always {
+      junit 'biojava-aligment/target/surfire-reports/**/*.xml'
+    }
   }
 }
